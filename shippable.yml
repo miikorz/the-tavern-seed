@@ -1,0 +1,63 @@
+language: node_js
+
+env:
+    global:
+        - PROJECT=iq-online-public
+        # AWS
+        - DEPLOY_S3_BUCKET=s3://$PROJECT
+        - DEPLOY_S3_REGION=eu-west-1
+        - DEPLOY_S3_PATH=dist
+        - DEPLOY_S3_URL=http://$PROJECT-$BRANCH.s3-website-eu-west-1.amazonaws.com
+        - secure: Xo7CS9vhckX8MO99PuWmNNQTW+hxD2+SZ40TqXI7E+MwY231kti3vkCuRancg0o18entKhr6/TJdAAoJr1LTWJ4gHp+TM3P2mxaTFKfG6XC2Q6m5H/fti7cck4qDDIdNiK0CP+KRm7hNbYZbqDjlrbbb8rt3r8QjqRFyMR3r1+ZicDEUv0SNmE4FRD8WkEUj+3RHQlkZuRp7lKzFXz36QpsPfvLWFmrzcTqKlUh0iIYy45chGiaj+OqTnyTtyWWVecwHiGyixAVotrmNC4Hvpj76J875ZavZuSP7i5UcdXaOr4m0U00g0uA1qN2tUFj5QKwjidB2iJWkhrhNfKaEMQ==
+        - secure: IxWSwrg9Pfi/1uEZTUDTMDQtOCKsZsKLDxjvau4HlRQIo8guM0rkuTUa1K2uYQ5m2/1743m2oFlBY5KWHkjuXKRb7rfEoblhgM3wgZI/6sSlRmDcA37+nAGVV41Gn2K5Z+Blk9PiFetTa6OCUcmQrk1D4ercANm+Ws/MyAKc712MRAHhOb+krfB3DSWFqJ1R93KpUoQ8F2nVVQmB+jNCafSRkYMCq2nW/5IJKTYcwZmnePOUDpTAmb8TrS1MI5e5n9N57E+Hwnm1I1MjmUoW5OIhWl55XYPCBqi7kUMRyC1Afe4eRTdL3AYp+Z0ZbVqUPoWQwx6VkFcnCRnPdOt04w==
+
+branches:
+    only:
+        - master
+        - pro
+
+node_js:
+    - 8.11.3
+
+before_install:
+
+    - npm config set registry http://registry.npmjs.org/
+    - if [ -d "/home/shippable/bin/aws --version" ]; then wget https://s3.amazonaws.com/aws-cli/awscli-bundle.zip; fi
+    - if [ -d "/home/shippable/bin/aws --version" ]; then unzip awscli-bundle.zip && ./awscli-bundle/install -b ~/bin/aws; fi
+
+install:
+    - npm -v
+    - npm install
+
+build:
+    cache: false
+    cache_dir_list:
+      - $SHIPPABLE_BUILD_DIR/node_modules
+
+    ci:
+    - if [ "$BRANCH" == "master" ]; then npm run build-prod; fi
+    - if [ "$BRANCH" == "pro" ]; then npm run build-prod; fi
+    # - if [ "$BRANCH" == "master" ]; then npm install -g serve; fi # TESTS !!
+    # - if [ "$BRANCH" == "master" ]; then npm run cypress-ci; fi # TESTS !!
+    # - xvfb-run --server-args="-ac" npm run shippable-test
+    # - npm run lint
+
+
+    on_success:
+        - aws s3 sync $DEPLOY_S3_PATH $DEPLOY_S3_BUCKET-$BRANCH --delete --acl public-read --region $DEPLOY_S3_REGION
+        - aws s3api copy-object --copy-source $PROJECT-$BRANCH/index.html --key index.html --bucket $PROJECT-$BRANCH --cache-control "no-cache" --metadata-directive "REPLACE" --acl "public-read" --content-type "text/html"
+
+integrations:                               
+#   notifications:
+#     - integrationName: $PROJECT-slack 
+#       type: slack  
+#       recipients:
+#         - "#entregacontinua"
+#       on_success: always
+#       on_failure: always
+#       on_cancel: always
+#       on_start: always
+#       on_pull_request: always
+
+# notifications:
+    # email: false

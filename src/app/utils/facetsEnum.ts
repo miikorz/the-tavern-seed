@@ -1,0 +1,21 @@
+export const facetsEnum = {
+    bathroomsNumber: 'Número de baños',
+    builtMeters: 'Metros construidos',
+    hasGarage: '¿Tiene garaje?',
+    hasStorageRoom: '¿Tiene trastero?',
+    hasElevator: '¿Tiene ascensor?',
+    hasSwimmingPool: '¿Tiene piscina?',
+    hasAirConditioneer: '¿Tiene aire acondicionado?',
+    hasGarden: '¿Tiene jardín?',
+    hasHeating: '¿Tiene calefacción?',
+    hasTerrace: '¿Tiene terraza?',
+    kitchenEquipment: 'Cocina equipada',
+    municipalityName: 'Municipio',
+    orientation: 'Orientación',
+    price: 'Precio',
+    propertyType: 'Tipo de propiedad',
+    provinceName: 'Provincia',
+    roomsNumber: 'Número de habitaciones',
+    subtype: 'Subtipo',
+    commercialNetworkType: 'Red comercial'
+};

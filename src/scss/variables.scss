@@ -1,0 +1,7 @@
+@import "colors.scss";
+
+$theme-colors: (
+    "primary": $primary,
+    "seconday": $secondary
+);
+@import "~node_modules/bootstrap/scss/bootstrap";

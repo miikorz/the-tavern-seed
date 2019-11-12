@@ -1,0 +1,5 @@
+FROM cypress/base:10
+
+RUN npm install -g wait-on
+RUN npm install -g http-server
+RUN npm install -g --unsafe-perm node-sass

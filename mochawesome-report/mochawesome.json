@@ -1,0 +1,112 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2018-11-28T17:01:32.954Z",
+    "end": "2018-11-28T17:01:36.602Z",
+    "duration": 3648,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false,
+    "passPercentClass": "success",
+    "pendingPercentClass": "danger"
+  },
+  "suites": {
+    "uuid": "bf8b6210-18a3-4cef-9e84-4b20679dc111",
+    "title": "",
+    "fullFile": "",
+    "file": "",
+    "beforeHooks": [],
+    "afterHooks": [],
+    "tests": [],
+    "suites": [
+      {
+        "uuid": "eb0404c9-9a21-48b3-96e7-518804719764",
+        "title": "Location",
+        "fullFile": "",
+        "file": "",
+        "beforeHooks": [],
+        "afterHooks": [],
+        "tests": [
+          {
+            "title": "cy.hash() - get the current URL hash",
+            "fullTitle": "Location cy.hash() - get the current URL hash",
+            "duration": 741,
+            "state": "passed",
+            "speed": "slow",
+            "pass": true,
+            "fail": false,
+            "pending": false,
+            "code": "// https://on.cypress.io/hash\ncy.hash().should('be.empty');",
+            "err": {},
+            "isRoot": false,
+            "uuid": "22ef7a2c-b272-403c-8714-56a83cb7c768",
+            "isHook": false,
+            "skipped": false
+          },
+          {
+            "title": "cy.location() - get window.location",
+            "fullTitle": "Location cy.location() - get window.location",
+            "duration": 384,
+            "state": "passed",
+            "speed": "slow",
+            "pass": true,
+            "fail": false,
+            "pending": false,
+            "code": "// https://on.cypress.io/location\ncy.location().should(function (location) {\n  expect(location.hash).to.be.empty;\n  expect(location.href).to.eq('https://example.cypress.io/commands/location');\n  expect(location.host).to.eq('example.cypress.io');\n  expect(location.hostname).to.eq('example.cypress.io');\n  expect(location.origin).to.eq('https://example.cypress.io');\n  expect(location.pathname).to.eq('/commands/location');\n  expect(location.port).to.eq('');\n  expect(location.protocol).to.eq('https:');\n  expect(location.search).to.be.empty;\n});",
+            "err": {},
+            "isRoot": false,
+            "uuid": "69a2dd97-fc66-4385-88d9-be19062f70dd",
+            "isHook": false,
+            "skipped": false
+          },
+          {
+            "title": "cy.url() - get the current URL",
+            "fullTitle": "Location cy.url() - get the current URL",
+            "duration": 341,
+            "state": "passed",
+            "speed": "slow",
+            "pass": true,
+            "fail": false,
+            "pending": false,
+            "code": "// https://on.cypress.io/url\ncy.url().should('eq', 'https://example.cypress.io/commands/location');",
+            "err": {},
+            "isRoot": false,
+            "uuid": "71fabf5b-9909-4660-8b7e-ce1a2fc9e6b0",
+            "isHook": false,
+            "skipped": false
+          }
+        ],
+        "suites": [],
+        "passes": [
+          "22ef7a2c-b272-403c-8714-56a83cb7c768",
+          "69a2dd97-fc66-4385-88d9-be19062f70dd",
+          "71fabf5b-9909-4660-8b7e-ce1a2fc9e6b0"
+        ],
+        "failures": [],
+        "pending": [],
+        "skipped": [],
+        "duration": 1466,
+        "root": false,
+        "rootEmpty": false,
+        "_timeout": 2000
+      }
+    ],
+    "passes": [],
+    "failures": [],
+    "pending": [],
+    "skipped": [],
+    "duration": 0,
+    "root": true,
+    "rootEmpty": true,
+    "_timeout": 2000
+  },
+  "copyrightYear": 2018
+}

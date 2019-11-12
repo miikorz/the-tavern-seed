@@ -1,0 +1,32 @@
+<div class="container-fluid">
+  <nav class="bg-white border-bottom fixed-top">
+    <div class="row align-middle">
+      <div class="col-12 col-md-6 col-xl-4 d-flex justify-content-between justify-content-sm-start">
+        <i (click)="toggleSidenav()" class="toggle-sidenav material-icons align-middle mr-2">menu</i>
+        <a href="#">
+          <img class="logo" src="https://www.innoquotient.com/wp-content/uploads/2017/11/Logo-Innoquotient-claim-e1511348846344.png">
+        </a>
+      </div>
+      <div class="col-5 col-md-6 col-xl-8 justify-content-end d-none d-xl-flex">
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">EL MODELO</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">EL DIAGNÓSTICO</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">LOS ÍNDICES IQ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">NOSOTROS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">PUBLICACIONES</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <router-outlet></router-outlet>
+</div>
